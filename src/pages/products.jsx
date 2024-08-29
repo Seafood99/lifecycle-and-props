@@ -18,7 +18,7 @@ export default function Products() {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedSearch(search);
-        }, 500); // 1000ms debounce
+        }, 500); // 500ms debounce
 
         return () => {
             clearTimeout(handler);
@@ -31,19 +31,22 @@ export default function Products() {
     );
 
     return (
-        <div>
+        <div className="p-4 bg-gray-100">
             <input
-                className='border border-gray-400 p-2'
+                className="border border-gray-300 rounded-lg p-2 mb-4 w-full text-gray-700"
                 type="text"
                 placeholder="Search products..."
                 value={search}
                 onInput={(e) => setSearch(e.target.value)}
             />
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredProducts.map(product => (
-                    <div key={product.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px', width: '200px' }}>
-                        <img src={product.thumbnail} alt={product.title} style={{ width: '100%' }} />
-                        <h3>{product.title}</h3>
+                    <div key={product.id} className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover" />
+                        <div className="p-4">
+                            <h3 className="font-bold text-lg text-gray-800 mb-2">{product.title}</h3>
+                            <p className="text-gray-600">${product.price}</p>
+                        </div>
                     </div>
                 ))}
             </div>
