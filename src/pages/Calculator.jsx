@@ -6,7 +6,16 @@ export default function Calculator() {
     const [output, setOutput] = useState(0);
 
     const increment = () => setOutput(prevOutput => prevOutput + 1);
-    const decrement = () => setOutput(prevOutput => prevOutput - 1);
+    
+    const decrement = () => {
+        setOutput(prevOutput => {
+            if (prevOutput > 0) {
+                return prevOutput - 1;
+            }
+            return prevOutput; // Tetap sama jika output sudah 0
+        });
+    };
+
 
     return (
         <div className='container grid grid-cols-2 min-h-screen'>
