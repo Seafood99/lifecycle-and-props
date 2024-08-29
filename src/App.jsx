@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Lifecycle from './pages/Lifecycle'
 import Products from './pages/products'
+import Calculator from './pages/Calculator'
 
 
 export default function App() {
@@ -16,6 +17,8 @@ export default function App() {
         <Route path="/lifecycle" element={<Lifecycle />} />
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
+        <Route path="/Calculator" element={<Calculator />} />
+
       </Routes>
     </BrowserRouter>
   )
